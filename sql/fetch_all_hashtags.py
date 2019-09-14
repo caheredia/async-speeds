@@ -1,6 +1,7 @@
 import sqlite3
 
-conn = sqlite3.connect("hashtag.db")
+filename = "sql/hashtag.db"
+conn = sqlite3.connect(filename)
 
 c = conn.cursor()
 
