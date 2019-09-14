@@ -1,4 +1,4 @@
-from app import app
+from servers.sanic_app import app
 
 total_url = "http://localhost:8000/total"
 
