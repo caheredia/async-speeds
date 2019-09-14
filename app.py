@@ -1,5 +1,5 @@
 from sanic import Sanic
-from sanic.response import text, json
+from sanic.response import json
 import aiosqlite
 
 
