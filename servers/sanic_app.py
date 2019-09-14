@@ -2,6 +2,7 @@ from sanic import Sanic
 from sanic.response import json
 import aiosqlite
 
+DATABASE = "sql/hashtag.db"
 
 app = Sanic(__name__)
 
@@ -10,7 +11,7 @@ app = Sanic(__name__)
 async def before_start(app, loop):
     print("SERVER STARTING")
     global db
-    db = await aiosqlite.connect("hashtag.db")
+    db = await aiosqlite.connect(DATABASE)
 
 
 @app.listener("after_server_stop")
