@@ -1,12 +1,17 @@
-from flask import Flask
+from servers.flask_app import app
 
-app = Flask(__name__)
+total_url = "http://localhost:8000/total"
 
-
-@app.route("/")
-def hello_world():
-    return "Hello, World!"
+tables = ["/hashtags", "/rates"]
 
 
-if __name__ == "__main__":
-    app.run()
+def test_root():
+    for table in tables:
+        _, response = app.test_client.get("http://127.0.0.1:5000/ ")
+        assert response.json == "Hello, World!"
+
+
+def test_api_ping(client):
+    res = client.get(url_for("api.pi"))
+    assert res.json == {"ping": "pong"}
+
