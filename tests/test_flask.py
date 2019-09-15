@@ -1,17 +1,25 @@
 from servers.flask_app import app
-
-total_url = "http://localhost:8000/total"
-
-tables = ["/hashtags", "/rates"]
+import pytest
 
 
-def test_root():
-    for table in tables:
-        _, response = app.test_client.get("http://127.0.0.1:5000/ ")
-        assert response.json == "Hello, World!"
+@pytest.fixture(scope="module")
+def test_client():
+    flask_app = app
+
+    # Flask provides a way to test your application by exposing the Werkzeug test Client
+    # and handling the context locals for you.
+    testing_client = flask_app.test_client()
+
+    # Establish an application context before running the tests.
+    ctx = flask_app.app_context()
+    ctx.push()
+
+    yield testing_client  # this is where the testing happens!
+
+    ctx.pop()
 
 
-def test_api_ping(client):
-    res = client.get(url_for("api.pi"))
-    assert res.json == {"ping": "pong"}
+def test_hello(test_client):
+    res = test_client.get("/")
+    assert res.json == "Hello, World!"
 
