@@ -23,3 +23,9 @@ def test_hello(test_client):
     res = test_client.get("/")
     assert res.json["message"] == "Hello, World!"
 
+
+def test_total(test_client):
+    res = test_client.get("/total")
+    total = res.json['total']
+    assert isinstance(total,int)
+

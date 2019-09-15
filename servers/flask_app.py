@@ -15,10 +15,10 @@ def before_request():
 
 
 @app.route("/total")
-def query_db(request):
+def total():
     c = g.db.execute("SELECT COUNT(*) FROM hashtags")
     results = c.fetchall()
-    return jsonify({"total": results})
+    return jsonify({"total": results[0][0]})
 
 
 @app.teardown_request
