@@ -2,9 +2,11 @@ import sqlite3
 import datetime
 import time
 
+DATABASE = "sql/hashtag.db"
+
 
 def main():
-    conn = sqlite3.connect("hashtag.db")
+    conn = sqlite3.connect(DATABASE)
 
     c = conn.cursor()
 
