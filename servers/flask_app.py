@@ -15,13 +15,10 @@ def before_request():
 
 
 @app.route("/total")
-def query_db(query, args=(), one=False):
-    cur = g.db.execute(query, args)
-    rv = [
-        dict((cur.description[idx][0], value) for idx, value in enumerate(row))
-        for row in cur.fetchall()
-    ]
-    return (rv[0] if rv else None) if one else rv
+def query_db(request):
+    c = g.db.execute("SELECT COUNT(*) FROM hashtags")
+    results = c.fetchall()
+    return jsonify({"total": results})
 
 
 @app.teardown_request
@@ -32,8 +29,8 @@ def teardown_request(exception):
 
 @app.route("/")
 def hello_world():
-    return jsonify("Hello, World!")
+    return jsonify({"message": "Hello, World!"})
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

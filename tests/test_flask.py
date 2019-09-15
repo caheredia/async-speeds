@@ -21,5 +21,5 @@ def test_client():
 
 def test_hello(test_client):
     res = test_client.get("/")
-    assert res.json == "Hello, World!"
+    assert res.json["message"] == "Hello, World!"
 
