@@ -1,6 +1,8 @@
 from servers.flask_app import app
 import pytest
 
+tables = ["/hashtags", "/rates"]
+
 
 @pytest.fixture(scope="module")
 def test_client():
@@ -19,13 +21,9 @@ def test_client():
     ctx.pop()
 
 
-def test_hello(test_client):
-    res = test_client.get("/")
-    assert res.json["message"] == "Hello, World!"
-
-
 def test_total(test_client):
-    res = test_client.get("/total")
-    total = res.json['total']
-    assert isinstance(total,int)
+    for table in tables:
+        res = test_client.get(f"/total{table}")
+        total = res.json["total"]
+        assert isinstance(total, int)
 

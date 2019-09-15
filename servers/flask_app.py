@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, g
+from flask import Flask, jsonify, g, request
 import sqlite3
 
 DATABASE = "sql/hashtag.db"
@@ -14,22 +14,28 @@ def before_request():
     g.db = connect_db()
 
 
-@app.route("/total")
-def total():
-    c = g.db.execute("SELECT COUNT(*) FROM hashtags")
+@app.route("/total/<table>")
+def total(table):
+    c = g.db.execute(f"SELECT COUNT(*) FROM {table}")
     results = c.fetchall()
     return jsonify({"total": results[0][0]})
+
+
+@app.route("/tag", methods=["POST"])
+def tag():
+    tag = request.json["tag"]
+    g.db.execute(
+        "INSERT INTO hashtags VALUES (:user,:category,:tag)",
+        {"user": "xristian", "category": "leica", "tag": tag},
+    )
+    g.db.commit()
+    return jsonify({"saved": tag})
 
 
 @app.teardown_request
 def teardown_request(exception):
     if hasattr(g, "db"):
         g.db.close()
-
-
-@app.route("/")
-def hello_world():
-    return jsonify({"message": "Hello, World!"})
 
 
 if __name__ == "__main__":
