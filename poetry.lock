@@ -357,6 +357,19 @@ version = ">=0.12"
 
 [[package]]
 category = "main"
+description = "A set of py.test fixtures to test Flask applications."
+name = "pytest-flask"
+optional = false
+python-versions = "*"
+version = "0.15.0"
+
+[package.dependencies]
+Flask = "*"
+Werkzeug = ">=0.7"
+pytest = ["*", ">=3.6"]
+
+[[package]]
+category = "main"
 description = "Python HTTP for Humans."
 name = "requests"
 optional = false
@@ -497,7 +510,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "e721e900644296e0714871a1cb5ea0b2397b4d200478f94068fa1d6a618ebd02"
+content-hash = "3160c80175136e2aac29c1a2b7b5c7fa3679b74b6606f3e46bee4ee76b23dd53"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -537,6 +550,7 @@ pycodestyle = ["95a2219d12372f05704562a14ec30bc76b05a5b297b21a5dfe3f6fac3491ae56
 pyflakes = ["17dbeb2e3f4d772725c777fabc446d5634d1038f234e77343108ce445ea69ce0", "d976835886f8c5b31d47970ed689944a0262b5f3afa00a5a7b4dc81e5449f8a2"]
 pyparsing = ["6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80", "d9338df12903bbf5d65a0e4e87c2161968b10d2e489652bb47001d82a9b028b4"]
 pytest = ["95d13143cc14174ca1a01ec68e84d76ba5d9d493ac02716fd9706c949a505210", "b78fe2881323bd44fd9bd76e5317173d4316577e7b1cddebae9136a4495ec865"]
+pytest-flask = ["283730b469604ecb94caac28df99a40b7c785b828dd8d3323596718b51dfaeb2", "d874781b622210d8c5d8061cdb091cb059fcb12203125110bd8e6f9256ccbf49"]
 requests = ["11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4", "9cf5292fcd0f598c671cfc1e0d7d1a7f13bb8085e9a590f48c010551dc6c4b31"]
 requests-async = ["8731420451383196ecf2fd96082bfc8ae5103ada90aba185888499d7784dde6f"]
 rfc3986 = ["0344d0bd428126ce554e7ca2b61787b6a28d2bbd19fc70ed2dd85efe31176405", "df4eba676077cefb86450c8f60121b9ae04b94f65f85b69f3f731af0516b7b18"]
