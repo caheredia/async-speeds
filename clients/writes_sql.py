@@ -1,7 +1,7 @@
 import sqlite3
 import datetime
 import time
-from clients.helpers import save_rate, get_row_count
+from clients.helpers import save_rate, get_row_count, find_rate
 
 DATABASE = "sql/hashtag.db"
 conn = sqlite3.connect(DATABASE)
@@ -24,9 +24,7 @@ def calculate_write_rate(rows):
         add_tag(time_now)
     end = time.time()
     delta = end - start
-    print(f"toatl time: {delta}")
-    write_rate = int(rows / delta)
-    print(f"Rows/second: {write_rate}")
+    write_rate = find_rate(delta, rows)
     return write_rate
 
 

@@ -4,7 +4,7 @@ import time
 import datetime
 import requests
 import uvloop
-from clients.writes_sql import save_rate
+from clients.helpers import save_rate, get_row_count
 
 url = "http://127.0.0.1:5000/tag"
 # url = "http://localhost:8000/tag"
@@ -38,10 +38,11 @@ async def main():
 
 
 if __name__ == "__main__":
-    r = requests.get("http://127.0.0.1:5000/total/hashtags")
-    print("number of rows: ", r.json()["total"])
-    #uvloop.install()
+    # print initial row count
+    get_row_count("hashtags")
+
+    # uvloop.install()
     asyncio.run(main())
-    r = requests.get("http://127.0.0.1:5000/total/hashtags")
-    print("number of rows: ", r.json()["total"])
+
+    get_row_count("hashtags")
 

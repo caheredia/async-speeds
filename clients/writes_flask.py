@@ -20,7 +20,6 @@ def write(time_stamp):
 runs = 100
 rows = 100
 for i in range(runs):
-    tasks = []
     start = time.time()
     for i in range(rows):
         time_now = datetime.datetime.now().isoformat()

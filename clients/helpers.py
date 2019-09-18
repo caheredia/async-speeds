@@ -22,3 +22,10 @@ def get_row_count(table):
     c = conn.cursor()
     c.execute(f"SELECT COUNT(*) FROM {table}")
     print(c.fetchall())
+
+
+def find_rate(delta, rows):
+    print(f"toatl time: {delta}")
+    write_rate = int(rows / delta)
+    print(f"Rows/second: {write_rate}")
+    return write_rate
