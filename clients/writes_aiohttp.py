@@ -4,9 +4,10 @@ import time
 import datetime
 import requests
 import uvloop
+from clients.writes_sql import save_rate
 
-
-url = "http://localhost:8000/tag"
+url = "http://127.0.0.1:5000/tag"
+# url = "http://localhost:8000/tag"
 save_url = "http://localhost:8000/save"
 
 
@@ -17,8 +18,8 @@ async def curl(session, url, method="GET", json=None):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        runs = 100
-        rows = 100
+        runs = 10
+        rows = 10
         for i in range(runs):
             tasks = []
             start = time.time()
@@ -33,15 +34,14 @@ async def main():
             write_rate = int(rows / delta)
             print(f"Rows/second: {write_rate}")
             # save write speeds
-            write_payload = {"method": "aiohttp_uv_loop_sanic", "rate": write_rate}
-            await curl(session, save_url, method="POST", json=write_payload)
+            save_rate("aiohttp_flask", write_rate)
 
 
 if __name__ == "__main__":
-    r = requests.get("http://localhost:8000/total/hashtags")
+    r = requests.get("http://127.0.0.1:5000/total/hashtags")
     print("number of rows: ", r.json()["total"])
-    uvloop.install()
+    #uvloop.install()
     asyncio.run(main())
-    r = requests.get("http://localhost:8000/total/hashtags")
+    r = requests.get("http://127.0.0.1:5000/total/hashtags")
     print("number of rows: ", r.json()["total"])
 
