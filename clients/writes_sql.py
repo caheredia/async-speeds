@@ -3,6 +3,8 @@ import datetime
 import time
 
 DATABASE = "sql/hashtag.db"
+conn = sqlite3.connect(DATABASE)
+c = conn.cursor()
 
 
 def add_tag(tag):
@@ -47,9 +49,6 @@ def multiple_runs(method, rows, runs):
 
 
 def main():
-    conn = sqlite3.connect(DATABASE)
-
-    c = conn.cursor()
 
     # print initial row count
     c.execute("SELECT COUNT(*) FROM hashtags")
@@ -61,8 +60,8 @@ def main():
     c.execute("SELECT COUNT(*) FROM hashtags")
     print(c.fetchall())
 
-    conn.close()
-
 
 if "__main__" == __name__:
     main()
+
+conn.close()
