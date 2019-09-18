@@ -28,6 +28,9 @@ uvloop seems to be slightly faster, but needs to be repeatadly tested.
 - Create an API that all frameworks can use for timing, writing, and saving. 
 
 - Write a fixture for sanic testing
+- Flask reference 
+
+- Call time in each iteration of loop
 
 # TLDR 
 - If you have to go through an API than definitely take advantage of asynchronous calls. However, for local writes it may not be necessary to add complexity to a code base just to eek out a couple of hundred rows per second...unless you really need the speed, then GO Fast. 
