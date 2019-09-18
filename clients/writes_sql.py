@@ -1,6 +1,7 @@
 import sqlite3
 import datetime
 import time
+from clients.helpers import save_rate, get_row_count
 
 DATABASE = "sql/hashtag.db"
 conn = sqlite3.connect(DATABASE)
@@ -13,18 +14,6 @@ def add_tag(tag):
         {"user": "xristian", "category": "leica", "tag": tag},
     )
     conn.commit()
-
-
-def save_rate(method, write_rate):
-    """Save rates to rate table."""
-    conn = sqlite3.connect(DATABASE)
-    c = conn.cursor()
-    c.execute(
-        "INSERT INTO rates VALUES (:method,:rate)",
-        {"method": method, "rate": write_rate},
-    )
-    conn.commit()
-    conn.close()
 
 
 def calculate_write_rate(rows):
@@ -51,14 +40,12 @@ def multiple_runs(method, rows, runs):
 def main():
 
     # print initial row count
-    c.execute("SELECT COUNT(*) FROM hashtags")
-    print(c.fetchall())
+    get_row_count("hashtags")
 
     multiple_runs(method="sql", rows=100, runs=100)
 
     # print final row count
-    c.execute("SELECT COUNT(*) FROM hashtags")
-    print(c.fetchall())
+    get_row_count("hashtags")
 
 
 if "__main__" == __name__:

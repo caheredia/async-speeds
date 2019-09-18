@@ -20,17 +20,22 @@ uvloop seems to be slightly faster, but needs to be repeatadly tested.
 - Is the fastest implementation so far! It's faster than the native sqlite python code. 
 - However, it has some subtleties. For instance it requires a session when making requests, which is easily accomplished with a context manager.
 
+# flask 
+- Break with multiple requests >50. 
+
 # Todo 
 - write an abstracted request funcion that can be called from 3 three different apps:
     - Flask with regular sqlite functions. 
 
-
+- Write a decorator to yield time of function run time
 - Create an API that all frameworks can use for timing, writing, and saving. 
 
 - Write a fixture for sanic testing
 - Flask reference 
 
 - Call time in each iteration of loop
+
+- Add tests for helpers
 
 # TLDR 
 - If you have to go through an API than definitely take advantage of asynchronous calls. However, for local writes it may not be necessary to add complexity to a code base just to eek out a couple of hundred rows per second...unless you really need the speed, then GO Fast. 

@@ -3,10 +3,8 @@ import requests
 import datetime
 import asyncio
 import time
-import uvloop
 
 
-time_now = datetime.datetime.now().isoformat()
 url = "http://localhost:8000/tag"
 save_url = "http://localhost:8000/save"
 
@@ -22,6 +20,7 @@ async def main():
         tasks = []
         start = time.time()
         for i in range(rows):
+            time_now = datetime.datetime.now().isoformat()
             payload = {"tag": time_now}
             tasks.append(curl(url, json=payload))
         await asyncio.gather(*tasks)
