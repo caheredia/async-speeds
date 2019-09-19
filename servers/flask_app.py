@@ -14,20 +14,10 @@ def before_request():
     g.db = connect_db()
 
 
-@app.route("/total/<table>")
-def total(table):
-    c = g.db.execute(f"SELECT COUNT(*) FROM {table}")
-    results = c.fetchall()
-    return jsonify({"total": results[0][0]})
-
-
-@app.route("/tag", methods=["POST"])
+@app.route("/stamp", methods=["POST"])
 def tag():
-    tag = request.json["tag"]
-    g.db.execute(
-        "INSERT INTO timestamps VALUES (:user,:category,:tag)",
-        {"user": "xristian", "category": "leica", "tag": tag},
-    )
+    tag = request.json["stamp"]
+    g.db.execute("INSERT INTO timestamps VALUES (:stamp)", {"stamp": tag})
     g.db.commit()
     return jsonify({"saved": tag})
 
