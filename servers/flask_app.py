@@ -25,7 +25,7 @@ def total(table):
 def tag():
     tag = request.json["tag"]
     g.db.execute(
-        "INSERT INTO hashtags VALUES (:user,:category,:tag)",
+        "INSERT INTO timestamps VALUES (:user,:category,:tag)",
         {"user": "xristian", "category": "leica", "tag": tag},
     )
     g.db.commit()

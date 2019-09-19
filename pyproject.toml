@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "2019"
 version = "0.1.0"
-description = "A python library to tumble hashtags"
+description = "A python library to tumble timestamps"
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
 

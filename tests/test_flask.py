@@ -1,7 +1,7 @@
 from servers.flask_app import app
 import pytest
 
-tables = ["/hashtags", "/rates"]
+tables = ["/timestamps", "/rates"]
 
 
 @pytest.fixture(scope="module")

@@ -35,9 +35,9 @@ async def main():
 
 
 if __name__ == "__main__":
-    r = requests.get("http://localhost:8000/total/hashtags")
+    r = requests.get("http://localhost:8000/total/timestamps")
     print("number of rows: ", r.json()["total"])
     # uvloop.install()
     asyncio.run(main())
-    r = requests.get("http://localhost:8000/total/hashtags")
+    r = requests.get("http://localhost:8000/total/timestamps")
     print("number of rows: ", r.json()["total"])

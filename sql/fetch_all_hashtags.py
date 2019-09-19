@@ -6,7 +6,7 @@ conn = sqlite3.connect(filename)
 c = conn.cursor()
 
 c.execute(
-    """SELECT * FROM hashtags
+    """SELECT * FROM timestamps
 """
 )
 print(c.fetchall())

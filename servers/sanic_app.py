@@ -32,7 +32,7 @@ async def post(request, table):
 async def post(request):
     tag = request.json["tag"]
     await db.execute(
-        "INSERT INTO hashtags VALUES (:user,:category,:tag)",
+        "INSERT INTO timestamps VALUES (:user,:category,:tag)",
         {"user": "xristian", "category": "leica", "tag": tag},
     )
     await db.commit()

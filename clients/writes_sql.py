@@ -9,10 +9,7 @@ c = conn.cursor()
 
 
 def add_tag(tag):
-    c.execute(
-        "INSERT INTO hashtags VALUES (:user,:category,:tag)",
-        {"user": "xristian", "category": "leica", "tag": tag},
-    )
+    c.execute("INSERT INTO timestamps VALUES (:stamp)", {"stamp": tag})
     conn.commit()
 
 
@@ -38,12 +35,12 @@ def multiple_runs(method, rows, runs):
 def main():
 
     # print initial row count
-    get_row_count("hashtags")
+    get_row_count("timestamps")
 
     multiple_runs(method="sql", rows=100, runs=100)
 
     # print final row count
-    get_row_count("hashtags")
+    get_row_count("timestamps")
 
 
 if "__main__" == __name__:

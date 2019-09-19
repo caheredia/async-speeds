@@ -7,7 +7,7 @@ from clients.writes_sql import save_rate
 url = "http://127.0.0.1:5000/"
 
 
-r = requests.get(url + "total/hashtags")
+r = requests.get(url + "total/timestamps")
 print("number of rows: ", r.json()["total"])
 
 
@@ -33,5 +33,5 @@ for i in range(runs):
     save_rate("flask", write_rate=write_rate)
 
 
-r = requests.get(url + "total/hashtags")
+r = requests.get(url + "total/timestamps")
 print("number of rows: ", r.json()["total"])

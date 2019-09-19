@@ -39,10 +39,10 @@ async def main():
 
 if __name__ == "__main__":
     # print initial row count
-    get_row_count("hashtags")
+    get_row_count("timestamps")
 
     # uvloop.install()
     asyncio.run(main())
 
-    get_row_count("hashtags")
+    get_row_count("timestamps")
 

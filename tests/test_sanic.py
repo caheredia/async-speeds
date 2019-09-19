@@ -2,7 +2,7 @@ from servers.sanic_app import app
 
 total_url = "http://localhost:8000/total"
 
-tables = ["/hashtags", "/rates"]
+tables = ["/timestamps", "/rates"]
 
 
 def test_total():
@@ -65,12 +65,12 @@ def test_tag_response():
 def test_tag_increase():
     """Test that after /tag post absolute number of rows in db increased by 1."""
     # fetch pre total
-    _, pre_response = app.test_client.get(total_url + "/hashtags")
+    _, pre_response = app.test_client.get(total_url + "/timestamps")
     total_pre = pre_response.json["total"]
     # add row to database
     payload = {"tag": "test"}
     _, save_response = app.test_client.post(tag_url, json=payload)
     # fetch post total
-    _, post_response = app.test_client.get(total_url + "/hashtags")
+    _, post_response = app.test_client.get(total_url + "/timestamps")
     total_post = post_response.json["total"]
     assert total_post == total_pre + 1
