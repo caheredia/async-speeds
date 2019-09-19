@@ -4,7 +4,7 @@ import time
 from clients.helpers import save_rate, get_row_count, find_rate
 
 
-url = "http://127.0.0.1:5000/"
+url = "http://127.0.0.1:5000/stamp"
 
 # print initial row count
 get_row_count("timestamps")
@@ -12,7 +12,7 @@ get_row_count("timestamps")
 
 def write(time_stamp):
     payload = {"stamp": time_stamp}
-    r = requests.post(url + "stamp", json=payload)
+    r = requests.post(url, json=payload)
     return r.json()
 
 

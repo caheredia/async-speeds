@@ -20,36 +20,13 @@ async def after_stop(app, loop):
     await db.close()
 
 
-@app.route("/total/<table>", methods=["GET"])
-async def post(request, table):
-    cursor = await db.execute(f"SELECT COUNT(*) FROM {table}")
-    rows = await cursor.fetchall()
-    await cursor.close()
-    return json({"total": rows[0][0]}, status=200)
-
-
-@app.route("/tag", methods=["POST"])
+@app.route("/stamp", methods=["POST"])
 async def post(request):
-    tag = request.json["tag"]
-    await db.execute(
-        "INSERT INTO timestamps VALUES (:user,:category,:tag)",
-        {"user": "xristian", "category": "leica", "tag": tag},
-    )
+    stamp = request.json["stamp"]
+    await db.execute("INSERT INTO timestamps VALUES (:stamp)", {"stamp": stamp})
     await db.commit()
-    return json({"saved": tag}, status=201)
-
-
-@app.route("/save", methods=["POST"])
-async def save_rate(request):
-    """Save rates to rate table."""
-    method = request.json["method"]
-    rate = request.json["rate"]
-    await db.execute(
-        "INSERT INTO rates VALUES (:method,:rate)", {"method": method, "rate": rate}
-    )
-    await db.commit()
-    return json({"method": method, "rate": rate}, status=201)
+    return json({"saved": stamp}, status=201)
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=False, access_log=False)
+    app.run(host="127.0.0.1", port=5000, debug=False, access_log=False)

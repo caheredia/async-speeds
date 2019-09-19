@@ -2,13 +2,10 @@ import aiohttp
 import asyncio
 import time
 import datetime
-import requests
 import uvloop
-from clients.helpers import save_rate, get_row_count
+from clients.helpers import save_rate, get_row_count, find_rate
 
-url = "http://127.0.0.1:5000/tag"
-# url = "http://localhost:8000/tag"
-save_url = "http://localhost:8000/save"
+url = "http://127.0.0.1:5000/stamp"
 
 
 async def curl(session, url, method="GET", json=None):
@@ -18,30 +15,28 @@ async def curl(session, url, method="GET", json=None):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        runs = 10
-        rows = 10
+        runs = 100
+        rows = 100
         for i in range(runs):
             tasks = []
             start = time.time()
             for i in range(rows):
                 time_now = datetime.datetime.now().isoformat()
-                payload = {"tag": time_now}
+                payload = {"stamp": time_now}
                 tasks.append(curl(session, url, "POST", json=payload))
             await asyncio.gather(*tasks)
             end = time.time()
             delta = end - start
-            print(f"total time: {delta}")
-            write_rate = int(rows / delta)
-            print(f"Rows/second: {write_rate}")
+            write_rate = find_rate(delta, rows)
             # save write speeds
-            save_rate("aiohttp_flask", write_rate)
+            save_rate("aiohttp_uvloop_sanic", write_rate=write_rate)
 
 
 if __name__ == "__main__":
     # print initial row count
     get_row_count("timestamps")
 
-    # uvloop.install()
+    uvloop.install()
     asyncio.run(main())
 
     get_row_count("timestamps")
