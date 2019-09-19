@@ -1,7 +1,7 @@
 import requests
 import datetime
 import time
-from clients.helpers import save_rate, get_row_count, find_rate
+from sql.helpers import save_rate, get_row_count, find_rate
 
 
 url = "http://127.0.0.1:5000/stamp"

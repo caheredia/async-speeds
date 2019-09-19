@@ -1,7 +1,7 @@
 import sqlite3
 import datetime
 import time
-from clients.helpers import save_rate, get_row_count, find_rate
+from sql.helpers import save_rate, get_row_count, find_rate
 
 DATABASE = "sql/write-speeds.db"
 conn = sqlite3.connect(DATABASE)
