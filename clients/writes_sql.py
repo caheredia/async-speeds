@@ -8,42 +8,30 @@ conn = sqlite3.connect(DATABASE)
 c = conn.cursor()
 
 
-def add_tag(tag):
+def write(tag):
     c.execute("INSERT INTO timestamps VALUES (:stamp)", {"stamp": tag})
     conn.commit()
 
 
-def calculate_write_rate(rows):
-    """Returns write rate to write integer number of rows."""
+# print initial row count
+get_row_count("timestamps")
+
+runs = 100
+rows = 100
+for i in range(runs):
     start = time.time()
     for i in range(rows):
         time_now = datetime.datetime.now().isoformat()
-        add_tag(time_now)
+        write(time_now)
     end = time.time()
     delta = end - start
     write_rate = find_rate(delta, rows)
-    return write_rate
+    # save write speeds
+    save_rate("flask", write_rate=write_rate)
 
 
-def multiple_runs(method, rows, runs):
-    """"Run writes multiple times and save results to rates table."""
-    for i in range(runs):
-        write_rate = calculate_write_rate(rows)
-        save_rate(method=method, write_rate=write_rate)
+# print final row count
+get_row_count("timestamps")
 
-
-def main():
-
-    # print initial row count
-    get_row_count("timestamps")
-
-    multiple_runs(method="sql", rows=100, runs=100)
-
-    # print final row count
-    get_row_count("timestamps")
-
-
-if "__main__" == __name__:
-    main()
 
 conn.close()

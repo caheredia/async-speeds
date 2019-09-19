@@ -1,7 +1,7 @@
 import requests
 import datetime
 import time
-from clients.writes_sql import save_rate
+from clients.writes_sql import save_rate, find_rate
 
 
 url = "http://127.0.0.1:5000/"
@@ -26,9 +26,7 @@ for i in range(runs):
         write(time_now)
     end = time.time()
     delta = end - start
-    print(f"total time: {delta}")
-    write_rate = int(rows / delta)
-    print(f"Rows/second: {write_rate}")
+    write_rate = find_rate(delta, rows)
     # save write speeds
     save_rate("flask", write_rate=write_rate)
 
