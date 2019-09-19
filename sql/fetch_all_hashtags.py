@@ -1,6 +1,6 @@
 import sqlite3
 
-filename = "sql/hashtag.db"
+filename = "sql/write-speeds.db"
 conn = sqlite3.connect(filename)
 
 c = conn.cursor()

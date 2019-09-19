@@ -3,7 +3,7 @@ import datetime
 import time
 from clients.helpers import save_rate, get_row_count, find_rate
 
-DATABASE = "sql/hashtag.db"
+DATABASE = "sql/write-speeds.db"
 conn = sqlite3.connect(DATABASE)
 c = conn.cursor()
 

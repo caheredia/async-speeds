@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, g, request
 import sqlite3
 
-DATABASE = "sql/hashtag.db"
+DATABASE = "sql/write-speeds.db"
 app = Flask(__name__)
 
 

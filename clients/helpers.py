@@ -1,7 +1,7 @@
 import sqlite3
 
 
-DATABASE = "sql/hashtag.db"
+DATABASE = "sql/write-speeds.db"
 
 
 def save_rate(method, write_rate):

@@ -2,7 +2,7 @@ from sanic import Sanic
 from sanic.response import json
 import aiosqlite
 
-DATABASE = "sql/hashtag.db"
+DATABASE = "sql/write-speeds.db"
 
 app = Sanic(__name__)
 
