@@ -21,7 +21,9 @@ def get_row_count(table):
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
     c.execute(f"SELECT COUNT(*) FROM {table}")
-    print(c.fetchall())
+    total = c.fetchall()[0][0]
+    print(total)
+    return total
 
 
 def find_rate(delta, rows):
