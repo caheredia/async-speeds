@@ -15,11 +15,11 @@ def before_request():
 
 
 @app.route("/stamp", methods=["POST"])
-def tag():
+def stamp():
     stamp = request.json["stamp"]
     g.db.execute("INSERT INTO timestamps VALUES (:stamp)", {"stamp": stamp})
     g.db.commit()
-    return jsonify({"saved": tag})
+    return jsonify({"saved": stamp})
 
 
 @app.teardown_request
