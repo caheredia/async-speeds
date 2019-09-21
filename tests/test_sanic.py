@@ -1,7 +1,7 @@
 from servers.sanic_app import app
 from sql.helpers import get_row_count
 
-url = "http://127.0.0.1:5000/stamp"
+url = "/stamp"
 
 
 def test_stamp_status():
