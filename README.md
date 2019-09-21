@@ -30,7 +30,6 @@ uvloop seems to be slightly faster, but needs to be repeatadly tested.
 - Write a decorator to yield time of function run time
 - Create an API that all frameworks can use for timing, writing, and saving. 
 
-- Write a fixture for sanic testing
 - Flask reference 
 
 - Call time in each iteration of loop
