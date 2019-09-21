@@ -25,16 +25,7 @@ uvloop seems to be slightly faster, but needs to be repeatadly tested.
 
 # Todo 
 - write an abstracted request funcion that can be called from 3 three different apps:
-    - Flask with regular sqlite functions. 
 
-- Write a decorator to yield time of function run time
-- Create an API that all frameworks can use for timing, writing, and saving. 
-
-- Flask reference 
-
-- Call time in each iteration of loop
-
-- Add tests for helpers
 
 - See how many requests it take to break each API (flask ~50), catch exception and write number from while loop
 
