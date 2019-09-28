@@ -16,7 +16,7 @@ def write(time_stamp):
     return r.json()
 
 
-runs = 10
+runs = 100
 rows = 100
 for i in range(runs):
     start = time.time()

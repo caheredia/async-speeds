@@ -14,8 +14,8 @@ async def curl(url, json=None):
 
 
 async def main():
-    runs = 10
-    rows = 50
+    runs = 100
+    rows = 100
     for i in range(runs):
         tasks = []
         start = time.time()
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     # print initial row count
     get_row_count("timestamps")
 
-    uvloop.install()
+    #uvloop.install()
     asyncio.run(main())
 
     # print final row count

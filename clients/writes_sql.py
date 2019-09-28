@@ -16,7 +16,7 @@ def write(tag):
 # print initial row count
 get_row_count("timestamps")
 
-runs = 10
+runs = 100
 rows = 100
 for i in range(runs):
     start = time.time()

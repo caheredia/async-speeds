@@ -27,7 +27,7 @@ def get_row_count(table):
 
 
 def find_rate(delta, rows):
-    print(f"toatl time: {delta}")
+    print(f"total time: {delta}")
     write_rate = int(rows / delta)
     print(f"Rows/second: {write_rate}")
     return write_rate
