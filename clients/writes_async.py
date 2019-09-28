@@ -28,14 +28,14 @@ async def main():
         delta = end - start
         write_rate = find_rate(delta, rows)
         # save write speeds
-        save_rate("async_flask", write_rate=write_rate)
+        save_rate("async_uvloop_sanic", write_rate=write_rate)
 
 
 if __name__ == "__main__":
     # print initial row count
     get_row_count("timestamps")
 
-    #uvloop.install()
+    uvloop.install()
     asyncio.run(main())
 
     # print final row count

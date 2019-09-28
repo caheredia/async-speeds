@@ -27,7 +27,7 @@ for i in range(runs):
     delta = end - start
     write_rate = find_rate(delta, rows)
     # save write speeds
-    save_rate("flask", write_rate=write_rate)
+    save_rate("sql", write_rate=write_rate)
 
 
 # print final row count
