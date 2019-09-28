@@ -16,7 +16,7 @@ async def curl(session, url, method="GET", json=None):
 async def main():
     async with aiohttp.ClientSession() as session:
         runs = 10
-        rows = 50
+        rows = 100
         for i in range(runs):
             tasks = []
             start = time.time()
