@@ -1,4 +1,4 @@
-# hashtag_tumbler
+# Async write rates
 A python library for saving and tumbling timestamps 
 
 `hashtag.py` contains a dictionary, timestamps. The items in timestamps are lists of timestamps, where the names define a user defined hashtag category. 
