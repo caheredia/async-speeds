@@ -1,5 +1,6 @@
 # Todo 
 - Include a Rust server with sync and aysnc writes to sqlite database. 
+- Include fastapi in server comparison 
 - See how many requests it take to break each API (flask ~50), catch exception and write number from while loop
 - Make charts with altair for write speeds. 
 
@@ -8,7 +9,7 @@ A python library for saving and tumbling timestamps
 
 `hashtag.py` contains a dictionary, timestamps. The items in timestamps are lists of timestamps, where the names define a user defined hashtag category. 
 
-# With straights sqlite3
+# With straight sqlite3
 - About 11,000 rows/s can be written if one c.commit() is call made after all inserts. Otherwise, about 200 rows/s.
 
 # With async sqlite3
