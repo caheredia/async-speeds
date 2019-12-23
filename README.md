@@ -1,3 +1,8 @@
+# Todo 
+- Include a Rust server with sync and aysnc writes to sqlite database. 
+- See how many requests it take to break each API (flask ~50), catch exception and write number from while loop
+- Make charts with altair for write speeds. 
+
 # Async write rates
 A python library for saving and tumbling timestamps 
 
@@ -23,11 +28,6 @@ uvloop seems to be slightly faster, but needs to be repeatadly tested.
 # flask 
 - Break with multiple requests >50. 
 
-# Todo 
-- Include a Rust server with sync and aysnc writes to sqlite database. 
-
-
-- See how many requests it take to break each API (flask ~50), catch exception and write number from while loop
 
 # TLDR 
 - If you have to go through an API than definitely take advantage of asynchronous calls. However, for local writes it may not be necessary to add complexity to a code base just to eek out a couple of hundred rows per second...unless you really need the speed, then GO Fast. 
